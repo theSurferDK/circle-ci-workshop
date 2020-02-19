@@ -13,6 +13,6 @@ jobs:
           command: ci/unit-test-app.sh
       - store_test_results:
           path: app/build/test-results
-#      - store_artifacts:
-#        path: app/build/
-#        destination: build
+      - store_artifacts:
+        path: app/build/libs
+        destination: build
