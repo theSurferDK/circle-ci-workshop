@@ -12,4 +12,4 @@ jobs:
           name: Use test unit
           command: ci/unit-test-app.sh
       - store_test_results:
-          path: test-results
+          path: app/build/test-results
