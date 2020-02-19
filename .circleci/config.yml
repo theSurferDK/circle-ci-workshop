@@ -1,10 +1,10 @@
 version: 2.0
 jobs:
+
   test:
     docker:
       - image: gradle:jdk11
     steps:
-      - checkout
       - run:
           name: The First Step
           command: ci/build-app.sh
@@ -13,11 +13,11 @@ jobs:
           command: ci/unit-test-app.sh
       - store_test_results:
           path: app/build/test-results
+
   build:
     docker:
       - image: gradle:jdk11
     steps:
-      - checkout
       - run:
           name: The First Step
           command: ci/build-app.sh
@@ -27,9 +27,22 @@ jobs:
       - store_artifacts:
           path: app/build/libs
           destination: build
+
+  clone-down:
+    docker:
+      - image: gradle:jdk11
+    steps:
+      - checkout
+
+
 workflows:
   version: 2
   two_job_flows:
     jobs:
-      - build
-      - test
+      - clone-down
+      - build:
+          requires:
+            - clone-down
+      - test:
+          requires:
+            - clone-down
