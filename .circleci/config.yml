@@ -5,7 +5,6 @@ jobs:
       - image: gradle:jdk11
     steps:
       - checkout
-        
       - run:
           name: The First Step
           command: ci/build-app.sh
