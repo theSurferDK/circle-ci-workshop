@@ -14,5 +14,5 @@ jobs:
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:
-        path: app/build/libs
-        destination: build
+          path: app/build/libs
+          destination: build
